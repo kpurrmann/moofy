@@ -21,7 +21,7 @@ class RemindMeController extends Zend_Controller_Action {
 				return $this->_helper->redirector('index');
 			}
 		}
-
+		
 		$this->view->form = $form;
 	}
 

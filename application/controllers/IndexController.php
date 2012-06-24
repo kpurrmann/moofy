@@ -11,7 +11,7 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
         $form = new Application_Form_RemindMe();
-		$form->setMethod('get')->setAction('remindMe/sign');
+		$form->setAction('remindMe/sign');
 		$this->view->form = $form;
     }
 
