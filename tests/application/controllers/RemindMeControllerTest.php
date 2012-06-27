@@ -20,10 +20,6 @@ class RemindMeControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
         $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
     }
 
     public function testSignAction()
@@ -31,20 +27,46 @@ class RemindMeControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $params = array('action' => 'sign', 'controller' => 'RemindMe', 'module' => 'default');
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
-		$this->_request->setParam('email', 'myemail@myemail.de');
         $this->dispatch($url);
+
+		$type = $this->getRequest()->getQuery('type');
         
+		// assertions
+
+		if($type == 1 || $type = 2) {
+			$this->assertModule($urlParams['module']);
+			$this->assertController($urlParams['controller']);
+			$this->assertAction($urlParams['action']);
+		} else {
+			$this->assertModule($urlParams['module']);
+			$this->assertController('Index');
+			$this->assertAction('index');
+		}
+
+
+    }
+
+    public function testActivateAction()
+    {
+        $params = array('action' => 'activate', 'controller' => 'RemindMe', 'module' => 'default');
+        $urlParams = $this->urlizeOptions($params);
+        $url = $this->url($urlParams);
+        $this->dispatch($url);
+
         // assertions
-		$this->assertAction('sign');
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
-		$this->assertAction($urlParams['action']);
-
-
-	}
+        $this->assertAction($urlParams['action']);
+        $this->assertQueryContentContains(
+            'div#view-content p',
+            'Danke'
+            );
+    }
 
 
 }
+
+
 
 
 

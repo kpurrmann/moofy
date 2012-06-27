@@ -5,21 +5,38 @@ class IndexController extends Zend_Controller_Action
 
     public function init()
     {
-        /* Initialize action controller here */
+        $layout = $this->getRequest()->getParam('layout');
+		if($layout){
+			$this->_helper->layout->setLayout($layout);
+		}
     }
 
     public function indexAction()
     {
+        // action body
+    }
 
-		$emailMapper = new Application_Model_EmailMapper();
-        $tst = $emailMapper->find(1);
-		Zend_Debug::dump($tst);
-		exit;
-        $form = new Application_Form_RemindMe();
-		$form->setAction('remindMe/sign');
-		$this->view->form = $form;
+    public function problemAction()
+    {
+        // action body
+    }
+
+    public function solutionAction()
+    {
+        // action body
+    }
+
+    public function howtoAction()
+    {
+        // action body
     }
 
 
 }
+
+
+
+
+
+
 

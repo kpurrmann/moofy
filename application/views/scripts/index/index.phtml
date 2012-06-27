@@ -1,8 +1,14 @@
-<?php
+<div class="row-fluid">
+	<div class="span12">
+		<h1>Puzzle Dir Deinen Sound!</h1>
+		<div class="row-fluid">
+			<div class="span2"><a class="btn btn-primary btn-large lightbox" href="/remindMe/index/type/1" title="Musiker anmelden">Musiker</a></div>
+			<div class="span4 offset4"><a class="btn btn-primary btn-large lightbox" href="/remindMe/index/type/2" title="Auftraggeber anmelden">Auftraggeber</a></div>
 
-	echo $this->form; ?>
+		</div>
 
-	 <?php foreach ($this->entries as $entry): ?>
-    <dt><?php echo $this->escape($entry->email) ?></dt>
-    <dd><?php echo $this->escape($entry->type) ?></dd>
-    <?php endforeach ?>
+	</div>
+	<a class="btn btn-success btn-large lightbox" href="/index/problem" title="Kennst du dieses Problem" >Kennst du dieses Problem</a>
+	<a class="btn btn-success btn-large lightbox" href="/index/solution" title="Unsere Lösung">Unsere Lösung</a>
+	<a class="btn btn-success btn-large lightbox" href="/index/howto" title="So funktioniert's">So funktioniert's</a>
+</div>

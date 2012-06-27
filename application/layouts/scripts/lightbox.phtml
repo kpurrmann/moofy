@@ -1,0 +1,23 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Zend Framework Quickstart Application</title>
+		<base href="<?php echo $this->baseUrl(); ?>" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap.min.css') ?>
+			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap-responsive.min.css') ?>
+			<?php echo $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/colorbox.css') ?>
+	</head>
+	<body>
+		lb
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<?php echo $this->layout()->content ?>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

@@ -51,6 +51,7 @@ class Application_Model_EmailMapper {
 	}
 
 	public function setEntry($data) {
+//		Zend_Debug::dump($email);
 
 		$email = new Application_Model_Email();
 		if (!empty($data)) {
@@ -65,9 +66,13 @@ class Application_Model_EmailMapper {
 
 			if (isset($data['hash']))
 				$email->setHash($data['hash']);
+			else
+				$email->setHash($this->generateHash($data['email']));
 
 			if (isset($data['activated']))
 				$email->setActivated($data['activated']);
+			else
+				$email->setActivated('0');
 
 			if (isset($data['created']))
 				$email->setCreated($data['created']);
@@ -96,6 +101,10 @@ class Application_Model_EmailMapper {
 		$email = $this->setEntry($result);
 
 		return $email;
+	}
+
+	private function generateHash($email){
+		return md5(new Zend_Date() . $email);
 	}
 
 }

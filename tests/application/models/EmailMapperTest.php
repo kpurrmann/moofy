@@ -52,6 +52,24 @@ class Application_Model_EmailMapperTest extends Ibuildings_Test_PHPUnit_Database
 		$this->assertDataSetsMatchXML('emailsFindOne.xml', $this->_dataSet);
 	}
 
+	public function testSetEntry(){
+		$data = array(
+		   'email'	 => 'user3@test.de',
+		   'type'	  => 1,
+		   'hash'	  => 'myHashInsert',
+		   'activated' => 0,
+		   'created'   => '2012-06-25 20:55:48');
+
+		$email = $this->_emailMapper->setEntry($data);
+		$this->assertInstanceOf('Application_Model_Email', $email);
+		$this->assertEquals($data['email'], $email->getEmail());
+		$this->assertEquals($data['type'], $email->getEmail_type());
+		$this->assertEquals($data['hash'], $email->getHash());
+		$this->assertEquals($data['activated'], $email->getActivated());
+		$this->assertEquals($data['created'], $email->getCreated());
+	}
+
+
 	public function testUpdateEmail() {
 		$data = array(
 		   'activated' => 0,
