@@ -20,6 +20,9 @@
         <controllerFile controllerName="Page">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="MailController">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="RemindMe"/>
@@ -55,6 +58,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="problem"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="MailController">
+            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
@@ -99,6 +105,9 @@
             <testApplicationActionMethod forActionName="sign"/>
           </testApplicationControllerFile>
           <testApplicationControllerFile forControllerName="Page">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="MailController">
             <testApplicationActionMethod forActionName="index"/>
           </testApplicationControllerFile>
         </testApplicationControllerDirectory>
