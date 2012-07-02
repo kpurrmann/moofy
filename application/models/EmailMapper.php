@@ -36,7 +36,6 @@ class Application_Model_EmailMapper {
 		$data = array(
 		   'id'		=> $email->getId(),
 		   'email'	 => $email->getEmail(),
-		   'type'	  => $email->getEmail_type(),
 		   'hash'	  => $email->getHash(),
 		   'activated' => $email->getActivated(),
 		   'created'   => $email->getCreated(),
@@ -103,7 +102,7 @@ class Application_Model_EmailMapper {
 		return $email;
 	}
 
-	private function generateHash($email){
+	protected function generateHash($email){
 		return md5(new Zend_Date() . $email);
 	}
 

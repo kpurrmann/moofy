@@ -5,23 +5,22 @@
 		<title>Zend Framework Quickstart Application</title>
 		<base href="<?php echo $this->baseUrl(); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap.min.css') ?>
-		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap-responsive.min.css') ?>
-		<?php echo $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/colorbox.css') ?>
+			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap.min.css') ?>
+			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap-responsive.min.css') ?>
+			<?php echo $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/colorbox.css') ?>
 	</head>
 	<body>
 
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<?php echo $this->layout()->content ?>
-				</div>
-			</div>
+		<div class="container">
+			<?php echo $this->layout()->content ?>
+			<footer>
+				
+			</footer>
 		</div>
 
-					<?php $this->headScript()->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js'); ?>
-					<?php $this->headScript()->appendFile($this->baseUrl() . '/scripts/bootstrap.min.js'); ?>
-					<?php $this->headScript()->appendFile($this->baseUrl() . '/scripts/jquery.colorbox-min.js'); ?>
-					<?php echo $this->headScript()->appendFile($this->baseUrl() . '/scripts/ajax.js'); ?>
-					</body>
-					</html>
+		<?php $this->headScript()->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js'); ?>
+		<?php $this->headScript()->appendFile($this->baseUrl() . '/scripts/bootstrap.min.js'); ?>
+		<?php $this->headScript()->appendFile($this->baseUrl() . '/scripts/jquery.colorbox-min.js'); ?>
+		<?php echo $this->headScript()->appendFile($this->baseUrl() . '/scripts/ajax.js'); ?>
+	</body>
+</html>

@@ -4,7 +4,6 @@ class Application_Model_Email {
 
 	protected $_id;
 	protected $_email;
-	protected $_email_type;
 	protected $_hash;
 	protected $_activated;
 	protected $_created;
@@ -13,7 +12,6 @@ class Application_Model_Email {
 		return array(
 		   'id'		=> $this->getId(),
 		   'email'	 => $this->getEmail(),
-		   'type'	  => $this->getEmail_type(),
 		   'hash'	  => $this->getHash(),
 		   'activated' => $this->getActivated(),
 		   'created'   => $this->getCreated(),
@@ -34,14 +32,6 @@ class Application_Model_Email {
 
 	public function setEmail($email) {
 		$this->_email = $email;
-	}
-
-	public function getEmail_type() {
-		return $this->_email_type;
-	}
-
-	public function setEmail_type($email_type) {
-		$this->_email_type = $email_type;
 	}
 
 	public function getHash() {

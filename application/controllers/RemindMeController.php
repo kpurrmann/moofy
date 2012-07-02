@@ -2,42 +2,45 @@
 
 class RemindMeController extends Zend_Controller_Action {
 
-	protected $_emailMapper = null;
+	protected $_mapper = null;
+	protected $_form   = null;
 
 	public function init() {
-		$this->_emailMapper = new Application_Model_EmailMapper();
-		$layout = $this->getRequest()->getParam('layout');
+		if ((!$this->getRequest()->getParam('type')) || ($this->getRequest()->getParam('type') > 2)) {
+			return $this->_helper->redirector('index', 'index');
+		} else {
+			if (1 == $this->getRequest()->getParam('type')) {
+				$this->_form = new Application_Form_RemindMusician();
+				$this->_mapper = new Application_Model_MusicianMapper();
+			} else {
+				$this->_form = new Application_Form_RemindClient();
+				$this->_mapper = new Application_Model_ClientMapper();
+			}
+		} $layout = $this->getRequest()->getParam('layout');
 		if ($layout) {
 			$this->_helper->layout->setLayout($layout);
 		}
 	}
 
 	public function indexAction() {
-		if ((!$this->getRequest()->getParam('type')) || ($this->getRequest()->getParam('type') > 2)) {
-			return $this->_helper->redirector('index', 'index');
-		} else {
-			$form = new Application_Form_RemindMe();
-			$form->setAction($this->getFrontController()->getBaseUrl() . '/remindMe/sign');
-			$form->getElement('type')->setValue((int)$this->getRequest()->getParam('type'));
-			$this->view->form = $form;
-		}
+		$this->_form->setAction($this->getFrontController()->getBaseUrl() . '/remindMe/sign');
+		$this->view->form = $this->_form;
 	}
 
 	public function signAction() {
 
-		$form	= new Application_Form_RemindMe();
 		$request = $this->getRequest();
 		if ($this->getRequest()->isPost()) {
-			if ($form->isValid($request->getPost())) {
-				$email = $this->_emailMapper->setEntry($request->getPost());
-				$this->_emailMapper->save($email);
-				$mail  = new SoundPuzzle_Mail();
-				$mail->assign('hash', $email->getHash());
-				$mail->renderEmail('activation');
-				$mail->setFrom('activation@soundpuzzle.de', 'Soundpuzzle Aktivierung');
-				$mail->addTo($email->getEmail(), $email->getEmail());
-				$mail->setSubject('Soundpuzzle Aktivierung');
-				$mail->send();
+			if ($this->_form->isValid($request->getPost())) {
+//				$email = $this->_mapper->setEntry($request->getPost());
+//				$this->_mapper->save($email);
+//				$mail  = new SoundPuzzle_Mail();
+//				$mail->assign('hash', $email->getHash());
+//				$mail->renderEmail('activation');
+//				$mail->setFrom('activation@soundpuzzle.de', 'Soundpuzzle Aktivierung');
+//				$mail->addTo($email->getEmail(), $email->getEmail());
+//				$mail->setSubject('Soundpuzzle Aktivierung');
+//				$mail->send();
 				$data  = array(
 				   'status' => 'success'
 				);
@@ -45,15 +48,13 @@ class RemindMeController extends Zend_Controller_Action {
 				$this->_helper->json($data);
 			}
 		}
-
-		$this->view->form = $form;
+		$this->view->form = $this->_form;
 	}
 
 	public function validateAction() {
 
-		$f = new Application_Form_RemindMe();
-		$f->isValid($this->_getAllParams());
-		$this->_helper->json($f->getMessages());
+		$this->_form->isValid($this->_getAllParams());
+		$this->_helper->json($this->_form->getMessages());
 	}
 
 	/*
@@ -75,7 +76,6 @@ class RemindMeController extends Zend_Controller_Action {
 			} else {
 				$this->view->msg = 'Es tut uns leid!';
 			}
-			Zend_Debug::dump($this->getRequest()->getParam('hash'));
 		}
 	}
 

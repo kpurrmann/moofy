@@ -4,7 +4,6 @@ class Application_Form_RemindMe extends Zend_Form {
 
 	public function init() {
 
-		$type = new Zend_Form_Element_Hidden('type');
 
 		$email = new Zend_Form_Element_Text('email');
 		$email->setRequired(true)
@@ -28,7 +27,6 @@ class Application_Form_RemindMe extends Zend_Form {
 		$this->setAttrib('class', 'well form-horizontal')
 		   ->setMethod('post')
 		   ->addElement($email)
-		   ->addElement($type)
 		   ->addElement($submit);
 	}
 
