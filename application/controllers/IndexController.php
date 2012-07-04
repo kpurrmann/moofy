@@ -16,17 +16,7 @@ class IndexController extends Zend_Controller_Action
         // action body
     }
 
-    public function problemAction()
-    {
-        // action body
-    }
-
     public function solutionAction()
-    {
-        // action body
-    }
-
-    public function howtoAction()
     {
         // action body
     }

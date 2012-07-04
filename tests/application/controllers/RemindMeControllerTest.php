@@ -48,19 +48,6 @@ class RemindMeControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testActivateAction()
     {
-        $params = array('action' => 'activate', 'controller' => 'RemindMe', 'module' => 'default');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
-
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'Danke'
-            );
     }
 
 

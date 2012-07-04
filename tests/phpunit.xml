@@ -1,5 +1,5 @@
 
-<phpunit bootstrap="./bootstrap.php">
+<phpunit bootstrap="bootstrap.php">
 	<testsuite name="Application Test Suite">
 		<directory>./application</directory>
 	</testsuite>
@@ -9,14 +9,15 @@
     
 	<filter>
         <!-- If Zend Framework is inside your project's library, uncomment this filter -->
-        <!-- 
-        <whitelist>
-            <directory suffix=".php">../../library/Zend</directory>
-        </whitelist>
-        -->
+         
+		<whitelist>
+			<directory suffix=".php">../library</directory>
+			<directory suffix=".php">../application</directory>
+		</whitelist>
+        
 	</filter>
 
-<!--	<logging>
+	<logging>
 		<log type="coverage-html" target="./log/report" charset="UTF-8" yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" />
-	</logging>-->
+	</logging>
 </phpunit>

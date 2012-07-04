@@ -18,9 +18,6 @@ class Application_Model_EmailMapper {
 		if (is_string($dbTable)) {
 			$dbTable = new $dbTable();
 		}
-		if (!$dbTable instanceof Zend_Db_Table_Abstract) {
-			throw new Exception('Invalid table data gateway provided');
-		}
 		$this->_dbTable = $dbTable;
 		return $this;
 	}
@@ -49,19 +46,16 @@ class Application_Model_EmailMapper {
 		}
 	}
 
-	public function setEntry($data) {
+	public function setEntry($data, $email = null) {
 //		Zend_Debug::dump($email);
-
-		$email = new Application_Model_Email();
+		if ($email === null)
+			$email = new Application_Model_Email();
 		if (!empty($data)) {
 			if (isset($data['id']))
 				$email->setId($data['id']);
 
 			if (isset($data['email']))
 				$email->setEmail($data['email']);
-
-			if (isset($data['type']))
-				$email->setEmail_type($data['type']);
 
 			if (isset($data['hash']))
 				$email->setHash($data['hash']);
@@ -85,7 +79,7 @@ class Application_Model_EmailMapper {
 	public function find($id) {
 		$result = $this->getDbTable()->find($id);
 		if (0 == count($result)) {
-			return;
+			return false;
 		}
 		$row   = $result->current();
 		$email = $this->setEntry($row);
@@ -95,14 +89,14 @@ class Application_Model_EmailMapper {
 	public function findByHash($hash) {
 		$result = $this->getDbTable()->fetchRow($this->getDbTable()->select()->where('hash = ?', $hash));
 		if (0 == count($result)) {
-			return;
+			return false;
 		}
 		$email = $this->setEntry($result);
 
 		return $email;
 	}
 
-	protected function generateHash($email){
+	protected function generateHash($email) {
 		return md5(new Zend_Date() . $email);
 	}
 

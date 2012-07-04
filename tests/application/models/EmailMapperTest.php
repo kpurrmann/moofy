@@ -1,7 +1,7 @@
 <?php
 
 //require_once dirname(__FILE__) . '/../../../application/models/EmailMapper.php';
-require '../library/Ibuildings/Test/PHPUnit/DatabaseTestCase/Abstract.php';
+require_once  '../library/Ibuildings/Test/PHPUnit/DatabaseTestCase/Abstract.php';
 
 /**
  * Test class for Application_Model_EmailMapper.
@@ -23,7 +23,6 @@ class Application_Model_EmailMapperTest extends Ibuildings_Test_PHPUnit_Database
 	public function testCreateEmail() {
 		$data = array(
 		   'email'	 => 'user3@test.de',
-		   'type'	  => 1,
 		   'hash'	  => 'myHashInsert',
 		   'activated' => 0,
 		   'created'   => '2012-06-25 20:55:48');
@@ -35,10 +34,22 @@ class Application_Model_EmailMapperTest extends Ibuildings_Test_PHPUnit_Database
 		$this->assertDataSetsMatchXML('emailsInsertIntoAssertion.xml', $this->_dataSet);
 	}
 
+	public function testCreateEmailWithoutCredentials() {
+		$data = array(
+		   'email' => 'user3@test.de');
+		$email  = $this->_emailMapper->setEntry($data);
+		$this->assertNotEmpty($email->getHash());
+		$this->assertEquals(0, $email->getActivated());
+		$this->assertNotEmpty($email->getCreated());
+	}
+
 	public function testFindEmail() {
 		$email = $this->_emailMapper->find(1);
 		$this->_dataSet = $this->convertRecordToDataSet($email->toArray(), 'emails');
 		$this->assertDataSetsMatchXML('emailsFindOne.xml', $this->_dataSet);
+
+		$notFound = $this->_emailMapper->find('notFound');
+		$this->assertFalse($notFound);
 	}
 
 	public function testFindByHashEmail() {
@@ -50,12 +61,14 @@ class Application_Model_EmailMapperTest extends Ibuildings_Test_PHPUnit_Database
 		$email = $this->_emailMapper->findByHash($data['hash']);
 		$this->_dataSet = $this->convertRecordToDataSet($email->toArray(), 'emails');
 		$this->assertDataSetsMatchXML('emailsFindOne.xml', $this->_dataSet);
+
+		$notFound = $this->_emailMapper->findByHash('notFound');
+		$this->assertFalse($notFound);
 	}
 
-	public function testSetEntry(){
+	public function testSetEntry() {
 		$data = array(
 		   'email'	 => 'user3@test.de',
-		   'type'	  => 1,
 		   'hash'	  => 'myHashInsert',
 		   'activated' => 0,
 		   'created'   => '2012-06-25 20:55:48');
@@ -63,12 +76,10 @@ class Application_Model_EmailMapperTest extends Ibuildings_Test_PHPUnit_Database
 		$email = $this->_emailMapper->setEntry($data);
 		$this->assertInstanceOf('Application_Model_Email', $email);
 		$this->assertEquals($data['email'], $email->getEmail());
-		$this->assertEquals($data['type'], $email->getEmail_type());
 		$this->assertEquals($data['hash'], $email->getHash());
 		$this->assertEquals($data['activated'], $email->getActivated());
 		$this->assertEquals($data['created'], $email->getCreated());
 	}
-
 
 	public function testUpdateEmail() {
 		$data = array(
