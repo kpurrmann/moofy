@@ -15,6 +15,8 @@ class RemindClientTest extends Zend_Test_PHPUnit_ControllerTestCase {
 	public function testCanCreateTypeElement(){
 		$form = new Application_Form_RemindClient();
 		$this->assertInstanceOf('Zend_Form_Element_Hidden', $form->getElement('type'));
+		$this->assertInstanceOf('Zend_Form_Element_Text', $form->getElement('email'));
+		$this->assertInstanceOf('Zend_Form_Element_Submit', $form->getElement('submit'));
 	}
 
 	public function testTypeIsValid(){

@@ -7,7 +7,7 @@ class RemindMeController extends Zend_Controller_Action {
 
 	public function init() {
 		if ((!$this->getRequest()->getParam('type')) || ($this->getRequest()->getParam('type') > 2)) {
-			return $this->_helper->redirector('index', 'index');
+			return $this->_helper->redirector('index', 'Index', 'default');
 		} else {
 			if (1 == $this->getRequest()->getParam('type')) {
 				$this->_form = new Application_Form_RemindMusician();
@@ -16,7 +16,9 @@ class RemindMeController extends Zend_Controller_Action {
 				$this->_form = new Application_Form_RemindClient();
 				$this->_mapper = new Application_Model_ClientMapper();
 			}
-		} $layout = $this->getRequest()->getParam('layout');
+		}
+
+		$layout = $this->getRequest()->getParam('layout');
 		if ($layout) {
 			$this->_helper->layout->setLayout($layout);
 		}
@@ -64,13 +66,13 @@ class RemindMeController extends Zend_Controller_Action {
 	public function activateAction() {
 		if ($this->getRequest()->getParam('hash')) {
 			$hash  = $this->getRequest()->getParam('hash');
-			$email = $this->_emailMapper->findByHash($hash);
+			$email = $this->_mapper->findByHash($hash);
 			if ($email) {
 				if ($email->getActivated() != 0) {
 					$this->view->msg = 'Schon aktiv';
 				} else {
 					$email->setActivated(1);
-					$this->_emailMapper->save($email);
+					$this->_mapper->save($email);
 					$this->view->msg = 'Ihr Account wurde';
 				}
 			} else {

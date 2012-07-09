@@ -47,7 +47,6 @@ class Application_Model_EmailMapper {
 	}
 
 	public function setEntry($data, $email = null) {
-//		Zend_Debug::dump($email);
 		if ($email === null)
 			$email = new Application_Model_Email();
 		if (!empty($data)) {
@@ -99,5 +98,4 @@ class Application_Model_EmailMapper {
 	protected function generateHash($email) {
 		return md5(new Zend_Date() . $email);
 	}
-
 }

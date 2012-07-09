@@ -1,0 +1,21 @@
+body {
+	font-family: 'Open Sans', Tahoma, Arial, sans-serif;
+	background: transparent url(../images/layout/background.jpg);
+}
+
+/* ------------------------ Überschriften ------------------------------------------ */
+
+.hero-unit h1 {
+	text-indent: -9999em;
+	background: url('../images/layout/puzzle-dir-deine-musik.png') no-repeat 0 0;
+	display: block;
+	width: 574px;
+	height:77px;
+}
+
+/* ------------------------ Bootstrap Modifikationen ------------------------------- */
+
+.hero-unit {
+	background: transparent;
+}
+

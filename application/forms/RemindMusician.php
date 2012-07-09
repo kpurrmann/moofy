@@ -1,6 +1,6 @@
 <?php
 
-class Application_Form_RemindMusician extends Zend_Form {
+class Application_Form_RemindMusician extends Application_Form_RemindMe {
 
 	public function init() {
 

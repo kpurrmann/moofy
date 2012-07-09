@@ -1,6 +1,6 @@
 <?php
 
-class Application_Form_RemindClient extends Zend_Form {
+class Application_Form_RemindClient extends Application_Form_RemindMe {
 
 	public function init() {
 

@@ -13,8 +13,10 @@
 		<whitelist>
 			<directory suffix=".php">../library</directory>
 			<directory suffix=".php">../application</directory>
+			<exclude>
+				<file suffix=".php">../application/controllers/ErrorController.php</file>
+			</exclude>
 		</whitelist>
-        
 	</filter>
 
 	<logging>

@@ -1,25 +1,7 @@
 $(function(){
 
-	$('input[type=text]').blur(function(){
-		doValidation($(this).attr('name'));
-		if(valid){
-			return false;
-		} else {
-			return false;
-		}
-	});
-
-	$('input[type=submit]').click(function(){
-		doValidation($(this).attr('name'));
-		alert('hgzugu');
-		
-		return false;
-		if(valid){
-			$.colorbox.close();
-			return false;
-		} else {
-			return false;
-		}
+	$('input[type=submit]').live('click', function(){		
+		doValidation($('input#email').attr('name'));
 		return false;
 	});
 
@@ -39,10 +21,10 @@ function doValidation(name) {
 			for(errorKey in resp[name]){
 				$('input[name='+ name +']').val(resp[name][errorKey]).parent().removeClass('control-group success').addClass('control-group error');
 			}
-			valid = false;
 		} else {
 			$('input[name='+ name +']').parent().removeClass('control-group error').addClass('control-group success');
-			valid = true;
+			var content = $('#cboxLoadedContent').find('#view-content');
+			content.text('supi');
 		}
 	});
 }
