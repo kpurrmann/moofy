@@ -2,22 +2,57 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Zend Framework Quickstart Application</title>
+		<title>SoundPuzzle - Puzzle Dir Deinen Sound</title>
 		<base href="<?php echo $this->baseUrl(); ?>" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<?php $this->headLink()->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,700') ?>
-			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/fonts.css') ?>
-			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap.min.css') ?>
-			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap-responsive.min.css') ?>
-			<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/layout.css') ?>
-			<?php echo $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/colorbox.css') ?>
+		<?php $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0'); ?>
+		<?php $this->headMeta()->appendName('author', 'Kevin Purrmann'); ?>
+		<?php $this->headMeta()->appendName('robots', 'index,nofollow'); ?>
+		<?php $this->headMeta()->appendName('revisited-after', '14 days'); ?>
+		<?php $this->headMeta()->appendName('keywords', 'soundpuzzle, musik, musiker, hintergrundmusik, erstellung'); ?>
+		<?php $this->headMeta()->appendName('description', 'Auf Soundpuzzle erstellen Dir Musiker im Wettbewerb preiswert und individuell den passenden Sound für Dein Musikprojekt.'); ?>
+		<?php echo $this->headMeta() ?>
+		<?php $this->headLink()->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,700') ?>
+		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/fonts.css') ?>
+		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap.min.css') ?>
+		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap-responsive.min.css') ?>
+		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/colorbox.css') ?>
+		<?php echo $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/layout.css') ?>
 	</head>
 	<body>
 
-		<div class="container">
-			<?php echo $this->layout()->content ?>
+		<div class="container ">
+			<section>
+				<div class="row">
+					<div class="span9">
+						<div class="hero-unit">
+							<h1>Puzzle Dir Deinen Sound</h1>
+						</div>
+						<?php echo $this->layout()->content ?>
+					</div>
+					<div class="span3">
+						<img src="/images/layout/puzzleteile.png" alt="Puzzleteile" class="padding-top-100" >
+					</div>
+				</div>
+			</section>
+
 			<footer>
-				
+				<div class="row">
+					<div class="span11 offset1 ">
+						<hr class="special">
+					</div>
+					<div class="span3 offset1">
+
+						<ul id="footer-navigation">
+							<li><a href="/kontakt" title="Kontakt" class="lightbox">Kontakt</a>&nbsp;//</li>
+							<li><a href="/impressum" title="Impressum" class="lightbox">Impressum</a></li>
+						</ul>
+					</div>
+					<div class="span4 offset1">
+						<p>Folge uns auf Facebook &nbsp;&nbsp; <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.soundpuzzle.de&amp;layout=button_count&amp;show_faces=true&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:20px;" allowTransparency="true"></iframe></p>
+					</div>
+				</div>
+
+
 			</footer>
 		</div>
 

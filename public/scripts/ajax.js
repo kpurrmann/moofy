@@ -13,8 +13,13 @@ $(function(){
 	}
 
 	$('a.lightbox').colorbox({
-//		'title' : false,
-		'maxWidth' : '450px'
+		'title' : '',
+		'maxWidth' : '550px',
+		'loop': false,
+		'current' : '',
+		'previous' : 'zurück',
+		'next' : 'weiter',
+		'close' : 'schließen'
 	});
 	$('a[rel=tooltip]').tooltip({
 		'placement' : 'bottom'

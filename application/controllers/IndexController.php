@@ -9,20 +9,34 @@ class IndexController extends Zend_Controller_Action
 		if($layout){
 			$this->_helper->layout->setLayout($layout);
 		}
+		
     }
 
     public function indexAction()
     {
-        // action body
+        
     }
 
     public function solutionAction()
+    {
+        $this->view->step = $this->getRequest()->getParam('step');
+    }
+
+    public function contactAction()
+    {
+    }
+
+    public function imprintAction()
     {
         // action body
     }
 
 
 }
+
+
+
+
 
 
 

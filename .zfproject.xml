@@ -11,6 +11,8 @@
         <controllerFile controllerName="Index">
           <actionMethod actionName="index"/>
           <actionMethod actionName="problem"/>
+          <actionMethod actionName="contact"/>
+          <actionMethod actionName="imprint"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
         <controllerFile controllerName="RemindMe">
@@ -62,6 +64,12 @@
           <viewControllerScriptsDirectory forControllerName="MailController">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="contact"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="imprint"/>
+          </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
@@ -99,6 +107,8 @@
           <testApplicationControllerFile forControllerName="Index">
             <testApplicationActionMethod forActionName="index"/>
             <testApplicationActionMethod forActionName="problem"/>
+            <testApplicationActionMethod forActionName="contact"/>
+            <testApplicationActionMethod forActionName="imprint"/>
           </testApplicationControllerFile>
           <testApplicationControllerFile forControllerName="RemindMe">
             <testApplicationActionMethod forActionName="index"/>
