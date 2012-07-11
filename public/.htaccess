@@ -1,3 +1,12 @@
+#AuthUserFile /www/htdocs/v107306//web/.htpasswd
+#AuthGroupFile /dev/null
+#AuthName "Anmeldung"
+#AuthType Basic
+#<Limit GET>
+#require valid-user
+#</Limit>
+
+AddHandler php53-cgi .php
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} -s [OR]

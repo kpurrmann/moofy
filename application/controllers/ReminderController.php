@@ -1,6 +1,6 @@
 <?php
 
-class RemindMeController extends Zend_Controller_Action {
+class ReminderController extends Zend_Controller_Action {
 
 	protected $_mapper = null;
 	protected $_form   = null;
@@ -33,19 +33,20 @@ class RemindMeController extends Zend_Controller_Action {
 	}
 
 	public function indexAction() {
-		$this->_form->setAction('/remindMe/sign');
+		$this->_form->setAction('/reminder/sign');
 		$this->view->form = $this->_form;
 	}
 
 	public function signAction() {
 
 		$request = $this->getRequest();
+//		Zend_Debug::dump($request);
 		if ($this->getRequest()->isPost()) {
 			if ($this->_form->isValid($request->getPost())) {
 				$email	 = $this->_mapper->setEntry($request->getPost());
 				$this->_mapper->save($email);
 				$mail	  = new SoundPuzzle_Mail('utf8');
-				$mail->assign('link', 'http://www.soundpuzzle.de/remindMe/activate/type/' . $request->getParam('type') . '/hash/' . $email->getHash());
+				$mail->assign('link', 'http://www.soundpuzzle.de/reminder/activate/type/' . $request->getParam('type') . '/hash/' . $email->getHash());
 				$mail->assign('email', $email->getEmail());
 				$mail->renderEmail('activation');
 				$mail->setFrom('kontakt@soundpuzzle.de', 'Soundpuzzle Aktivierung');
@@ -58,7 +59,7 @@ class RemindMeController extends Zend_Controller_Action {
 				$adminMail->renderEmail('admin');
 				$adminMail->setFrom('kontakt@soundpuzzle.de', 'Soundpuzzle Aktivierung');
 				$adminMail->addTo('kontakt@soundpuzzle.de');
-				$adminMail->setSubject('Soundpuzzle Aktivierung');
+				$adminMail->setSubject('Soundpuzzle Aktivierung Admin');
 				$adminMail->send();
 				$data	  = array(
 				   'status' => 'success'

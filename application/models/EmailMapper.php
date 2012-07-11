@@ -96,6 +96,7 @@ class Application_Model_EmailMapper {
 	}
 
 	protected function generateHash($email) {
-		return md5(new Zend_Date() . $email);
+		$date = new Zend_Date();
+		return md5($date->get() . $email);
 	}
 }

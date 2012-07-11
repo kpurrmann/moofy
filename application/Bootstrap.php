@@ -21,6 +21,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		   array('controller' => 'index', 'action' => 'imprint')));
 		$router->addRoute('imprint', new Zend_Controller_Router_Route('/impressum',
 		   array('controller' => 'index', 'action' => 'imprint')));
+		$router->addRoute('remindMeInLightbox', new Zend_Controller_Router_Route('/reminder/type/:type/layout/:layout',
+		   array('controller' => 'reminder', 'action' => 'index')));
+		$router->addRoute('remindMe', new Zend_Controller_Router_Route('/reminder/type/:type',
+		   array('controller' => 'reminder', 'action' => 'index')));
 		//...
 		// Returns the router resource to bootstrap resource registry
 		return $router;

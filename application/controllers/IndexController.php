@@ -5,11 +5,11 @@ class IndexController extends Zend_Controller_Action
 
     public function init()
     {
+		
         $layout = $this->getRequest()->getParam('layout');
 		if($layout){
 			$this->_helper->layout->setLayout($layout);
 		}
-		
     }
 
     public function indexAction()
