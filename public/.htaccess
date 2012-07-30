@@ -6,7 +6,7 @@
 #require valid-user
 #</Limit>
 
-AddHandler php53-cgi .php
+#AddHandler php53-cgi .php
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} -s [OR]
