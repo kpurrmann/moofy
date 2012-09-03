@@ -17,6 +17,21 @@
 		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/bootstrap-responsive.min.css') ?>
 		<?php $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/colorbox.css') ?>
 		<?php echo $this->headLink()->appendStylesheet($this->baseUrl() . '/styles/layout.css') ?>
+
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-4950415-8']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
 	</head>
 	<body>
 
@@ -43,12 +58,12 @@
 					<div class="span3 offset1">
 
 						<ul id="footer-navigation">
-							<li><a href="/kontakt" title="Kontakt" class="lightbox">Kontakt</a>&nbsp;//</li>
+							<li><a href="/datenschutz" title="Datenschutz" class="lightbox">Datenschutz</a>&nbsp;//</li>
 							<li><a href="/impressum" title="Impressum" class="lightbox">Impressum</a></li>
 						</ul>
 					</div>
 					<div class="span4 offset1">
-						
+
 					</div>
 				</div>
 

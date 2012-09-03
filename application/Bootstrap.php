@@ -13,10 +13,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		$router = $front->getRouter();
 
 		// Add some routes
-		$router->addRoute('contactInLightbox', new Zend_Controller_Router_Route('/kontakt/layout/:layout',
-		   array('controller' => 'index', 'action' => 'contact')));
-		$router->addRoute('contact', new Zend_Controller_Router_Route('/kontakt',
-		   array('controller' => 'index', 'action' => 'contact')));
+		$router->addRoute('privacyInLightbox', new Zend_Controller_Router_Route('/datenschutz/layout/:layout',
+		   array('controller' => 'index', 'action' => 'privacy')));
+		$router->addRoute('', new Zend_Controller_Router_Route('/datenschutz',
+		   array('controller' => 'index', 'action' => 'privacy')));
 		$router->addRoute('imprintInLightbox', new Zend_Controller_Router_Route('/impressum/layout/:layout',
 		   array('controller' => 'index', 'action' => 'imprint')));
 		$router->addRoute('imprint', new Zend_Controller_Router_Route('/impressum',

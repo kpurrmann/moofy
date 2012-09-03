@@ -22,7 +22,7 @@ class IndexController extends Zend_Controller_Action
         $this->view->step = $this->getRequest()->getParam('step');
     }
 
-    public function contactAction()
+    public function privacyAction()
     {
     }
 
